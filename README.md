@@ -1,9 +1,7 @@
-﻿Meu nome é GitHub Copilot.
 
-```markdown
 # Testes de Persistência de Enum e Relacionamentos N:N com EF Core
 
-![Formas de persistir Enum](https://private-user-images.githubusercontent.com/40217599/514603826-443c4f3d-9737-401c-b73d-4d2b2e0ef841.png)
+![Formas de persistir o Enum no EF](https://private-user-images.githubusercontent.com/40217599/514603826-443c4f3d-9737-401c-b73d-4d2b2e0ef841.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjMxNTE4NjksIm5iZiI6MTc2MzE1MTU2OSwicGF0aCI6Ii80MDIxNzU5OS81MTQ2MDM4MjYtNDQzYzRmM2QtOTczNy00MDFjLWI3M2QtNGQyYjJlMGVmODQxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTExMTQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUxMTE0VDIwMTkyOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTg5ZmY3YzkxY2Q2YzRiNGQxNmJlMzhiMjgzNTJkZjI5ZjBiMmY2ZTdkZTE4NzJjZDkwZmRmMDMyZWFkNDk0OWQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.lL_4hHPec3DQ3neVLLeSa8qPbB3P6b2ZbR99NPyX7t4)
 
 ## Objetivo
 Demonstrar diferentes estratégias para persistir valores de `enum` no banco de dados usando Entity Framework Core e abordar modelos de relacionamento muitos-para-muitos (N:N), incluindo armadilhas de cascata.
@@ -13,7 +11,7 @@ Demonstrar diferentes estratégias para persistir valores de `enum` no banco de 
 ## 1. Modelo de Domínio Usado
 
 ### Enum de Status (persistido via tabela de lookup)
-```
+```csharp
 public enum StatusSolicitacaoEnum
 {
     Novo = 1,
