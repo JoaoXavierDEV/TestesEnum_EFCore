@@ -26,7 +26,7 @@ public enum StatusSolicitacaoEnum
 ```
 
 ### Classe de domínio usando shadow property
-```
+```csharp
 public class Solicitacao : BaseEntity
 {
     private int _idStatusSolicitacao; // shadow property mapeado em OnModelCreating
@@ -47,7 +47,7 @@ public class Solicitacao : BaseEntity
 
 ### 2.1. Padrão (int)
 Sem configuração adicional:
-```
+```csharp
 builder.Entity<Solicitacao>()
        .Property(x => x.Prioridade); // Armazena como int (valor numérico do enum)
 ```
@@ -55,7 +55,7 @@ Vantagens: simples, performático.
 Desvantagens: pouco legível em consultas SQL.
 
 ### 2.2. Como string (nome do enum)
-```
+```csharp
 solicitacao.Property(x => x.Prioridade)
            .HasConversion<string>()    // salva "Baixa", "Media", ...
            .HasMaxLength(20)
@@ -65,7 +65,7 @@ Vantagens: legível.
 Desvantagens: renomear membros quebra histórico; ocupa mais espaço.
 
 ### 2.3. Usando Description Attribute
-```
+```csharp
 var prioridadeConverter = new ValueConverter<PrioridadeEnum, string>(
     v => EnumExtensions.GetEnumDescription(v),
     v => EnumExtensions.ParseFromDescription<PrioridadeEnum>(v)
@@ -81,7 +81,7 @@ Desvantagens: parsing exige cuidado (possível exceção se texto não existir).
 
 ### 2.4. Tabela de Lookup (Status)
 Cria tabela `StatusSolicitacao` sem depender de converter:
-```
+```csharp
 status.Property(s => s.Id).ValueGeneratedNever();
 status.HasData(
     new StatusSolicitacao { Id = 1, Descricao = "Novo" }, /* ... */
@@ -109,7 +109,7 @@ Desvantagens: exige clareza e testes.
 
 ### 3.1. Many-to-Many explícito com entidade de junção
 Entidade:
-```
+```csharp
 public class DepartamentoRelatorio : BaseEntity
 {
     public int RelatorioId { get; set; }
@@ -120,7 +120,7 @@ public class DepartamentoRelatorio : BaseEntity
 ```
 
 Configuração:
-```
+```csharp
 modelBuilder.Entity<DepartamentoRelatorio>(entity =>
 {
     entity.HasKey(rd => rd.Id);
@@ -138,7 +138,7 @@ modelBuilder.Entity<DepartamentoRelatorio>(entity =>
 ```
 
 Uso:
-```
+```csharp
 var relatorio = _context.Relatorios.Find(idRelatorio);
 var departamento = _context.Departamentos.Find(idDepartamento);
 
@@ -160,7 +160,7 @@ Correção: usar `DeleteBehavior.Restrict` ou remover o relacionamento redundant
 
 ### 3.3. Many-to-Many implícito (Skip Navigations)
 Alternativo (não usado aqui):
-```
+```csharp
 public class Relatorio
 {
     public ICollection<Departamento> Departamentos { get; set; } = new();
@@ -198,7 +198,7 @@ Mitigação:
 ## 5. Exemplos de Query
 
 Buscar solicitações com status (lookup):
-```
+```csharp
 var lista = await _context.Solicitacoes
     .Select(s => new {
         s.Id,
@@ -208,7 +208,7 @@ var lista = await _context.Solicitacoes
 ```
 
 Buscar relatórios por departamento (N:N):
-```
+```csharp
 var relatorios = await _context.Relatorios
     .Where(r => r.DepartamentoRelatorio.Any(dr => dr.DepartamentoId == idDepto))
     .ToListAsync();
