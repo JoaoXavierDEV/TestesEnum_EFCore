@@ -1,7 +1,8 @@
 
 # Testes de Persistência de Enum e Relacionamentos N:N com EF Core
 
-![Formas de persistir o Enum no EF](https://private-user-images.githubusercontent.com/40217599/514603826-443c4f3d-9737-401c-b73d-4d2b2e0ef841.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjM2NzAwOTksIm5iZiI6MTc2MzY2OTc5OSwicGF0aCI6Ii80MDIxNzU5OS81MTQ2MDM4MjYtNDQzYzRmM2QtOTczNy00MDFjLWI3M2QtNGQyYjJlMGVmODQxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTExMjAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUxMTIwVDIwMTYzOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTdkOTZkOWViMTFmYzE0NjlhODk3ZmZiNDM5NjM3MDQ3ODhlYTM5YjFmNGE5MjA1MTk4MjA4MWNmNzhjZjI3ZjkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.UREJVWnp_-VN6WIJhGH2l4tjXYqb3F74T2etNL08J5o)
+<img width="1092" height="439" alt="Captura de tela 2025-11-14 170755" src="https://github.com/user-attachments/assets/cbfacf4d-8e8b-4e78-be70-ab08cdfb13f4" />
+
 
 ## Objetivo
 Demonstrar diferentes estratégias para persistir valores de `enum` no banco de dados usando Entity Framework Core e abordar modelos de relacionamento muitos-para-muitos (N:N), incluindo armadilhas de cascata.
